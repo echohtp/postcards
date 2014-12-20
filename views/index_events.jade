@@ -1,0 +1,43 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+
+    script(src='/javascripts/jquery.min.js')
+
+      
+
+  body.container
+    p
+    div(class=['header','col-md-8','col-md-offset-2'])
+      ul.nav.nav-pills
+        li(role="presentation" class="active")
+          a(href="/events/") Events
+        li(role="presentation")
+          a(href="/address/") Address Book
+    block content
+    div.container
+      .row
+        div(class=['col-md-8','col-md-offset-2'])
+          span.h1 all our events
+          a.btn.btn-primary.pull-right(style="margin-top:10px;", href='/events/new') New Event
+          hr
+          table.table.table-hover
+            tr
+              th Event Name
+              th Event ID
+              th View
+              th Remove
+            each event in events
+              tr
+                th.a(name='#{event.event_id}' class='event_row')= event.name
+                th= event.event_id
+                th
+                  a(href="/events/#{event.event_id}") View
+                th 
+                  a(href="/events/delete/#{event.event_id}") X
+
+
+      

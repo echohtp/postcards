@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+
+    script(src='/javascripts/jquery.min.js')
+    script
+  body
+    p
+    div(class=['header','col-md-8','col-md-offset-2'])
+      ul.nav.nav-pills
+        li(role="presentation")
+          a(href="/events/") Events
+        li(role="presentation")
+          a(href="/address/" class="active") Address Book
+    block content
+    div.container
+      .row
+        div(class=['col-md-8','col-md-offset-2'])
+          h1= e.name
+          h4= e.adr_id
+          hr
+          h3 do some editing on things
+        

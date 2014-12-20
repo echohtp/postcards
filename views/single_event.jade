@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+
+    script(src='/javascripts/jquery.min.js')
+    script
+      
+
+  body
+    block content
+    div.container
+      .row
+        div(class=['col-md-8','col-md-offset-2'])
+          span.h1= e.name
+          hr
+          h2 This is a #{e.type} event.
+          h3 Recipients
+          each addr in e.toWhom
+            div.recipient-container.well
+              p= addr.name
+              p= addr.phone
+              p= addr.email
+
+        

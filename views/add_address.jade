@@ -1,0 +1,63 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    script(src='/javascripts/jquery.min.js')
+
+  body.container
+    p
+    div(class=['header','col-md-8','col-md-offset-2'])
+      ul.nav.nav-pills
+        li(role="presentation" )
+          a(href="/events/") Events
+        li(role="presentation" class="active")
+          a(href="/address/" ) Address Book
+    block content
+  div.container
+    .row
+      div(class=['col-md-8','col-md-offset-2'])
+        h1 Add a new recipient
+        hr
+      
+        form(class='form-horizontal', role="form", method="POST", action="/address/add")
+          .form-group
+            label(for="inputName", class=["col-sm-3", "control-label"]) Name
+            .col-sm-9
+              input(type="text", class="form-control", name="inputName", placeholder="Name")
+          .form-group
+            label(for="inputAddress1", class=["col-sm-3", "control-label"]) Address Line 1
+            .col-sm-9
+              input(type="text", class="form-control", name="inputAddress1", placeholder="Address Line 1")
+          .form-group
+            label(for="inputAddress2", class=["col-sm-3", "control-label"]) Address Line 2
+            .col-sm-9
+              input(type="text", class="form-control", name="inputAddress2", placeholder="Address Line 2")
+          .form-group
+            label(for="inputCity", class=["col-sm-3", "control-label"]) City
+            .col-sm-9
+              input(type="text", class="form-control", name="inputCity", placeholder="City")
+          .form-group
+            label(for="inputState", class=["col-sm-3", "control-label"]) State/Province
+            .col-sm-9
+              input(type="text", class="form-control", name="inputState", placeholder="State/Province")
+          .form-group
+            label(for="inputZip", class=["col-sm-3", "control-label"]) Zip/Postal Code
+            .col-sm-9
+              input(type="text", class="form-control", name="inputZip", placeholder="Zip/Postal Code")
+          .form-group
+            label(for="inputCountry", class=["col-sm-3", "control-label"]) Country
+            .col-sm-9
+              input(type="text", class="form-control", name="inputCountry", placeholder="Country")
+          .form-group
+            label(for="inputPhone", class=["col-sm-3", "control-label"]) Phone
+            .col-sm-9
+              input(type="text", class="form-control", name="inputPhone", placeholder="Phone")
+          .form-group
+            label(for="inputEmail", class=["col-sm-3", "control-label"]) Email
+            .col-sm-9
+              input(type="text", class="form-control", name="inputEmail" placeholder="Email")
+          .form-group
+            div(class=["col-sm-3"])
+            button(class=["btn", "btn-default", "btn-submit"]) Add Address

@@ -1,0 +1,39 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+
+    script(src='/javascripts/jquery.min.js')
+
+  body.container
+    p
+    div(class=['header','col-md-8','col-md-offset-2'])
+      ul.nav.nav-pills
+        li(role="presentation" )
+          a(href="/events/") Events
+        li(role="presentation" class="active")
+          a(href="/address/" ) Address Book
+    block content
+  div.container
+    .row
+      div(class=['col-md-8','col-md-offset-2'])
+        span.h1 all our addresses
+        a.btn.btn-primary.pull-right(style="margin-top:10px;", href='/address/new') New Address
+        hr
+        table.table.table-hover
+          tr
+            th Name
+            th ID
+            th View
+            th Remove
+          each address in addresses
+            tr
+             th(name='#{address.adr_id}' class='address_row')= address.name
+             th= address.adr_id
+             th
+              a(href="/address/#{address.adr_id}") View
+             th 
+              a(href="/address/delete/#{address.adr_id}") X
+             

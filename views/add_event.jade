@@ -1,0 +1,53 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+
+    script(src='/javascripts/jquery.min.js')
+
+  body.container
+    p
+    div(class=['header','col-md-8','col-md-offset-2'])
+      ul.nav.nav-pills
+        li(role="presentation" )
+          a(href="/events/") Events
+        li(role="presentation" class="active")
+          a(href="/address/" ) Address Book
+    block content
+  div.container
+    .row
+      div(class=['col-md-8','col-md-offset-2'])
+        h1 Add a new event
+        hr
+      
+        form(class='form-horizontal', role="form", method="POST", action="/events/add")
+          .form-group
+            p Event Name
+            input(type="text", class="form-control", name="inputName", id="inputName" placeholder="Name")
+            br
+            p Select recipients
+            .checkbox(style="border: 1px #cccccc solid; margin-bottom:10px")
+              each address in addresses
+                label
+                  input(type="checkbox", name="address", value="#{address.adr_id}")
+                  | #{address.name}
+                br
+              br
+            p Personal or party?
+            div
+              label
+                input(type="radio", name="type", value="Personal")
+                | Personal
+              br
+              label
+                input(type="radio", name="type", value="Party")
+                | Party
+            br
+            div
+              label
+                p Event secret key: #{event_key}
+                input(type="hidden", name="event_key" value="#{event_key}")
+            button(class=["btn", "btn-default", "btn-submit"]) Add Event
+          
